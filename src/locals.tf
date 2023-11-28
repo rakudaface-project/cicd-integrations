@@ -1,7 +1,7 @@
 locals {
   organization = ""
   project      = ""
-  region       = {
+  region = {
     aws = ""
     gcp = ""
   }
