@@ -7,6 +7,7 @@ module "terraform_cloud" {
   project                   = local.project
   repository                = "infrastructure-as-code"
   workload_identity_pool_id = google_iam_workload_identity_pool.cicd_integrations.workload_identity_pool_id
+  vcs_enabled               = local.project == "root"
 }
 
 module "github_actions" {
