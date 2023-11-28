@@ -14,3 +14,7 @@ variable "workload_identity_pool_id" {
   type = string
 }
 
+variable "vcs_enabled" {
+  type = bool
+}
+

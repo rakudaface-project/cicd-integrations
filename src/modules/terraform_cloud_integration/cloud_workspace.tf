@@ -17,11 +17,14 @@ resource "tfe_workspace" "target" {
 
   execution_mode = "remote"
 
-  vcs_repo {
-    branch                     = data.github_repository.target.default_branch
-    identifier                 = data.github_repository.target.full_name
-    ingress_submodules         = true
-    github_app_installation_id = data.tfe_github_app_installation.app.id
+  dynamic "vcs_repo" {
+    for_each = var.vcs_enabled ? ["enabled"] : []
+    content {
+      branch                     = data.github_repository.target.default_branch
+      identifier                 = data.github_repository.target.full_name
+      ingress_submodules         = true
+      github_app_installation_id = data.tfe_github_app_installation.app.id
+    }
   }
   working_directory = "/src"
   trigger_patterns  = ["/src/*.tf", "/src/**/*.tf", "/src/*.hcl", "/src/**/*.hcl"]
