@@ -14,7 +14,7 @@ terraform {
     }
     tfe = {
       source  = "hashicorp/tfe"
-      version = "~> 0.50"
+      version = "~> 0.53"
     }
     http = {
       source  = "hashicorp/http"
